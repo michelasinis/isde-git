@@ -32,3 +32,15 @@ def split_data(x, y, tr_fraction=0.5):
 
     """
     pass
+def fit(xtr, ytr):
+    n_classes = np.unique(ytr).size
+    n_features = xtr.shape[1]
+    centroids = np.zeros(shape=(n_classes, n_features))
+    for k in range(n_classes):
+        centroids[k,:] = np.mean(xtr[ytr == k , :] , axis=0)
+    return centroids
+
+
+centroids = fit(xtr, ytr)
+plot_ten_digits(centroids)
+plt.show()
