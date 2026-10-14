@@ -32,3 +32,21 @@ def split_data(x, y, tr_fraction=0.5):
 
     """
     pass
+
+
+
+# predict
+from sklearn.metrics import pairwise_distances
+
+def predict(xts, centroids):
+    dist = pairwise_distances(xts, centroids)
+    ypred = np.argmin(dist, axis=1)
+    return ypred
+
+ypred = predict(xts, centroids)
+print(ypred)
+print(yts)
+
+print("error: ", np.mean(ypred != yts))
+
+
