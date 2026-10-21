@@ -34,4 +34,11 @@ def split_data(x, y, tr_fraction=0.5):
 
 
 
-# predict
+    Xtr = x[tr_idx, :]
+    ytr = y[tr_idx]
+
+    Xts = x[ts_idx, :]
+    yts = y[ts_idx]
+
+    return Xtr, ytr, Xts, yts
+#try to add a comment
