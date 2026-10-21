@@ -25,7 +25,6 @@ def load_data(filename):
     X = z[:, 1:]
     return X, y
 
-
 def split_data(x, y, tr_fraction=0.5):
     """
     Split the data X,y into two random subsets
