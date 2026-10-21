@@ -42,7 +42,13 @@ class NMC(object):
             xk = Xtr[ytr == self._class_labels[k], :]
             self._centroids[k, :] = np.mean(xk, axis=0)
 
-    def predict(self, xts):
-        pass
+    def predict(self, Xts):
 
+        if self._centroids is None:
+          raise ValueError("The classifier is not trained. Call fit first!")
+        dist_euclidean = euclidean_distances(Xts, self._centroids)
+        idx_min = np.argmin(dist_euclidean, axis=1)
+        yc = self._class_labels[idx_min]
+        return yc
+    
 
